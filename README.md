@@ -1,17 +1,17 @@
-## open_topup_api
-_Express Api Server for OpenTopup (ES6)_
+## topup_api
+_Express Api Server for Topup (ES6)_
 
 ### Introduction
 
-OpenTopup_api is an express api server that is the backend of OpenTopup mobile Application. The whole project wants to showcase the capabilities of ReactNative. Further informations including the Sketch files and the React Native project can be found _here_.
+Topup_api is an express api server that is the backend of Topup mobile Application. The whole project wants to showcase the capabilities of ReactNative. Further informations including the Sketch files and the React Native project can be found _here_.
 
 To run the mobile App you will need this backend, which is developed using Express, mongoose and mongo db with ES6.
 
 ### Install
 
 ```sh
-$ git clone https://github.com/derese/open_topup_api.git
-$ cd open_topup_api
+$ git clone https://github.com/derese/topup_api.git
+$ cd topup_api
 $ npm install
 ```
 
