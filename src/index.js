@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import passport from 'passport';
+import cors from 'cors';
 
 import router from './router';
 import dbConfig from './config.db';
@@ -17,6 +18,7 @@ let app = express();
 let reqAuth = passport.authenticate('jwt',{session:false});// passport Authenticating middleware
 let reqSignIn = passport.authenticate('local',{session:false}); // passport Signin middleware
 
+app.use(cors());
 app.use(morgan('combined')); //logging middle ware
 app.use(bodyParser.json({type:'*/*'})); // parse incoming requests in to JSON.
 
