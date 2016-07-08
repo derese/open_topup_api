@@ -31,7 +31,7 @@ Since our code is written in ES6, we need to transpile it; and to do so we are u
 $ npm run build
 ```
 
--run our nodeserver in another terminal
+- run our nodeserver in another terminal
 our nodeserver is configured to run in either **development** mode or **porduction** mode. We use hte NODE_ENV variable to set and identify the enviroment. FYI based on the enviroment the database connection strings are also different/
 
 ```sh
