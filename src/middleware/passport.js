@@ -8,22 +8,22 @@ import LocalStrategy from 'passport-local';
 //Setup options for JWT Strategy
 const jwtOptions = {
     jwtFromRequest:ExtractJwt.fromHeader('authorization'),
-    secretOrKey:secret
+    secretOrKey:secret    
 };
-
+const localOptions = {usernameField:'email'};
 
 //create local strategy for email and password login
 //verify this email and password and call done with the user if correct
 //else call done with false
-const localOptions = {usernameField:'email'};
+
+
 const localLogin = new LocalStrategy(localOptions,(email,password,done)=>{             
     User.findOne({email:email})
     .catch(err => {return done(err,false)})
     .then((user)=>{                    
         if(user)
         {              
-            user.comparePassword(password,(err,match)=>{
-                console.log(`err ${err} match ${match}`);
+            user.comparePassword(password,(err,match)=>{                
                 if(err){return done(err)}
                 if(!match){return done(null,false);}
 
@@ -39,7 +39,8 @@ const localLogin = new LocalStrategy(localOptions,(email,password,done)=>{
 //Create JWT Strategy
 //if the userID exists call done with User Object
 //if not call done with out a user Object
-const jwtLogin = new JwtStrategy(jwtOptions,(payload,done)=>{   
+const jwtLogin = new JwtStrategy(jwtOptions,(payload,done)=>{  
+    console.log("wewee"); 
     User.findById(payload.sub)
     .catch(err => done(err,false))
     .then((user)=>{

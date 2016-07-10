@@ -3,8 +3,8 @@ import {bcryptSaltHashPassword,bcryptComparePassword} from '../helper/bcryptHelp
 
 let Schema = mongoose.Schema;
 let userSchema = new Schema ({
-    email:{type:String,unique:true,lowercase:true},
-    password:{type:String},
+    email:{type:String,unique:true,lowercase:true,required:true},
+    password:{type:String,required:true},
     firstName:{type:String,required:true},
     //lastName:{type:String,required:true},
     //phone:{type:String},

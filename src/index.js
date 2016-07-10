@@ -4,9 +4,11 @@ import morgan from 'morgan';
 import passport from 'passport';
 import cors from 'cors';
 
+
 import router from './router';
 import dbConfig from './config.db';
 import serverConfig from './config.server';
+
 
 // defines our  Jwtoptions , jwtStrargy and tells passport to use that strategy
 import passportMiddleware from './middleware/passport';
@@ -21,7 +23,6 @@ let reqSignIn = passport.authenticate('local',{session:false}); // passport Sign
 app.use(cors());
 app.use(morgan('combined')); //logging middle ware
 app.use(bodyParser.json({type:'*/*'})); // parse incoming requests in to JSON.
-
 
 
 dbConfig();
