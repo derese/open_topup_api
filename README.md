@@ -30,6 +30,13 @@ Since our code is written in ES6, we need to transpile it; and to do so we are u
 ```sh
 $ npm run build
 ```
+- run the node process that is gone run different jobs.
+We have used Agenda to configure our email sending jobs.After running mongo deamon fire up our agenda with the following commands.
+
+```sh
+$ npm run jobs
+```
+
 
 - run our nodeserver in another terminal
 our nodeserver is configured to run in either **development** mode or **porduction** mode. We use hte NODE_ENV variable to set and identify the enviroment. FYI based on the enviroment the database connection strings are also different/
@@ -38,7 +45,6 @@ our nodeserver is configured to run in either **development** mode or **porducti
 $ npm run dev
 ```
 
+
 ###Warning
 for the sake of convinence i have added config.secret.js. This file holds the secret key that is used by jwt to generate a token. in production and other enviroments this file should be added to .gitignore.
-
-
