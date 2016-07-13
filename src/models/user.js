@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import {bcryptSaltHashPassword,bcryptComparePassword} from '../helper/bcryptHelper';
-import userContactSchema from './user_contact';
+import {userContactSchema} from './user_contact';
 
 let Schema = mongoose.Schema;
 let userSchema = new Schema ({
