@@ -74,11 +74,11 @@ export function reset(req,res,next)
     .catch(err => next(err))
     .then((val)=>{                        
         agenda.now('reset password',{email:email},(done)=>{
-            res.json(201,"");
-        });
-                      
-        
-        //res.mailer.send(template,options,callback);        
+            //change current users password and send it back 
+            //to implement:  this should check if there was an error and do something else
+            res.json(201,"an email with instructions has been sent to your email account.");
+        });                                              
     });
 }
+
 

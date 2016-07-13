@@ -19,11 +19,11 @@ module.exports = function(agenda)
         from:    "noreply.topup@gmail.com", 
         to:      job.attrs.data.email, 
         subject: "Topup Reset Password"
-        }, function(err, message) { 
-            if(err)
-            done(err);
-            else
-            done();
+        }, function(err, message) {             
+            if(err)            
+            done(err);            
+            else                
+            done();                    
          });
         
         //check user that has set reset password to true and send email
