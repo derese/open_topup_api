@@ -1,6 +1,6 @@
 import {signin,signup,reset} from './controllers/authentication';
 import {listActiveOffers,addOffer,ToggleOffer,removeOffer} from './controllers/offerController';
-import {addContact,editContact} from './controllers/userContactController';
+import {addContact,editContact,deleteContact} from './controllers/userContactController';
 
 export default function Router(app,reqSignIn,reqAuth)
 {            
@@ -11,6 +11,7 @@ export default function Router(app,reqSignIn,reqAuth)
 
     app.post('/user/:id/contact',addContact);
     app.put('/user/:userId/contact/:contactId',editContact);
+    app.delete('/user/:userId/contact/:contactId',deleteContact);
     
     app.get('/offer/:status',listActiveOffers);
     app.post('/offer',addOffer);

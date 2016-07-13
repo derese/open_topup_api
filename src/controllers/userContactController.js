@@ -24,7 +24,7 @@ export function addContact(req,res,next)
             return res.status(422).json(formatResponse(true,_error,null)); 
         })
         .then((val)=>{            
-            return res.status(200).send(formatResponse(false,null,val.userContacts[val.userContacts.length-1])); 
+            return res.status(200).send(formatResponse(false,null,contact)); 
         });
     });
 }
@@ -32,11 +32,11 @@ export function addContact(req,res,next)
 export function editContact(req,res,next)
 {
     let contactId = req.params.contactId;
-    let userID = req.params.userId;
+    let userId = req.params.userId;
 
     let contactInfo = req.body.contact;
 
-    User.findById(userID)
+    User.findById(userId)
     .catch((err) => {
         mongooseErrorHelper(err); 
         return res.status(422).json(formatResponse(true,_error,null)); 
@@ -55,11 +55,34 @@ export function editContact(req,res,next)
                 return res.status(422).json(formatResponse(true,_error,null)); 
             })
             .then((val) => {
-                res.status(200).send(formatResponse(false,null,val.userContacts.id(contactId)));
+                res.status(200).send(formatResponse(false,null,contact));
             });
         }
         else
         res.status(404).send(formatResponse(true,"contact not found"),null);
     });
+}
+
+export function deleteContact(req,res,next)
+{
+    let contactId = req.params.contactId;
+    let userId = req.params.userId; 
+
+    User.findById(userId)
+    .catch((err) => {
+        mongooseErrorHelper(err); 
+        return res.status(422).json(formatResponse(true,_error,null)); 
+    })
+    .then((val)=>{    
+        let contact = val.userContacts.id(contactId).remove();        
+            val.save()
+            .catch((err) => {
+                mongooseErrorHelper(err); 
+                return res.status(422).json(formatResponse(true,_error,null)); 
+            })
+            .then((val) => {
+                res.status(200).send(formatResponse(false,null,contact));
+            });                        
+    });  
 }
 
